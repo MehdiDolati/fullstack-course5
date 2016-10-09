@@ -6,7 +6,6 @@ angular.module('Data')
 
 MenuDataService.$inject = ['$http'];
 function MenuDataService($http) {
-	console.log('called');
 	var menu = this;
 	menu.getAllCategories = function () {
 		return $http({
@@ -17,7 +16,7 @@ function MenuDataService($http) {
 				return response.data;
 			})
 			.catch(function(error) {
-				console.log('Error while getting categories.');
+				alert('Error while getting categories.');
 			});
 	}
 	menu.getItemsForCategory = function(categoryShortName) {
@@ -29,11 +28,10 @@ function MenuDataService($http) {
 					}
 				})
 				.then(function (response) {		
-				console.log(response);	
 					return [response.data, categoryShortName];
 				})
 				.catch(function(error) {
-					console.log('Error while getting items for category.');
+					alert('Error while getting items for category.');
 				});
 		}
     }
