@@ -6,14 +6,10 @@
 
   RoutesConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
   function RoutesConfig($stateProvider, $urlRouterProvider) {
-    console.log($urlRouterProvider);
-    // Redirect to home page if no other URL matches
     $urlRouterProvider.otherwise('/');
 
-    // *** Set up UI states ***
     $stateProvider
 
-    // Home page
     .state('home', {
       url: '/',
       templateUrl: 'js/templates/home.template.html'
