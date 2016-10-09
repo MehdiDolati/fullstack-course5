@@ -1,7 +1,7 @@
 (function () {
 'use strict';
 
-angular.module('menuApp')
+angular.module('MenuApp')
 .controller('CategoryItemsController', CategoryItemsController);
 
 CategoryItemsController.$inject = ['$stateParams', 'MenuDataService', 'categoryName', 'items'];
