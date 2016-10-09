@@ -8,6 +8,7 @@ angular.module('MenuData')
 MenuDataService.$inject = ['$q','$http', 'MENU_DATA_BASE_URL']
 function MenuDataService($q, $http, MENU_DATA_BASE_URL) {
   var service = this;
+ 
   service.getAllCategories = function () {
     var deferred = $q.defer();
     
@@ -17,8 +18,10 @@ function MenuDataService($q, $http, MENU_DATA_BASE_URL) {
       $http({ method: "GET", url: (MENU_DATA_BASE_URL + "categories.json")}).then(function (response) {
         service.cachedCategories = response.data;
         deferred.resolve(service.cachedCategories);
-      }); 
+      });
+      
     }
+
     return deferred.promise;            
   };
 
