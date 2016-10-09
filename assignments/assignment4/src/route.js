@@ -7,6 +7,7 @@ angular.module('MenuApp')
 RoutesConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
 function RoutesConfig($stateProvider, $urlRouterProvider) {
 
+  // Redirect to home page if no other URL matches
   $urlRouterProvider.otherwise('/');
 
   // *** Set up UI states ***
@@ -18,30 +19,29 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
     templateUrl: 'src/menuapp/templates/home.template.html'
   })
 
-  // Categories
-  .state('categories', {
-    url: '/categories',
-    templateUrl: 'src/menuapp/templates/categories-main.template.html',
-    controller: 'CategoriesController as categoriesCtrl',
+  // Premade list page
+  .state('mainList', {
+    url: '/main-list',
+    templateUrl: 'src/menuapp/templates/main-categories.template.html',
+    controller: 'MainMenuAppController',
+    controllerAs: 'mainList',
     resolve: {
       categories: ['MenuDataService', function (MenuDataService) {
-        return MenuDataService.getAllCategories(); 
+        return MenuDataService.getAllCategories();
       }]
-    }
+         }
+   
   })
 
-  .state('category', {
-    url: '/category/{shortName}',
-    templateUrl: 'src/menuapp/templates/category-items.template.html',
-    controller: 'CategoryItemsController as categoryItemsCtrl',
+  .state('itemDetail', {
+    url: '/main-list/{category}',
+    templateUrl: 'src/Menu/templates/items-list.template.html',
+    controller: 'ItemsCategoryController',
+    controllerAs: 'itemList',
     resolve: {
-      items: ['$stateParams', 'MenuDataService',
-            function ($stateParams, MenuDataService) {
-              return MenuDataService.getItemsForCategory($stateParams.shortName);
-            }],
-      categoryName: ['$stateParams', 'MenuDataService', function ($stateParams, MenuDataService) {
-               return MenuDataService.getCategoryName($stateParams.shortName);
-            }]
+        items: ['$stateParams','MenuDataService', function ($stateParams, MenuDataService) {
+          return MenuDataService.getItemsForCategory($stateParams.category);
+        }]
     }
   });
 }
