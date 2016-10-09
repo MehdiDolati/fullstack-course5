@@ -1,5 +1,5 @@
 (function() {
 'use strict';
 
-angular.module('menuData', []);
+angular.module('MenuData', []);
 })();
