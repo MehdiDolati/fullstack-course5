@@ -1,7 +1,7 @@
 (function () {
 'use strict';
 
-angular.module('menuData')
+angular.module('MenuData')
 .service('MenuDataService', MenuDataService)
 .constant('MENU_DATA_BASE_URL', "https://davids-restaurant.herokuapp.com/");
 
