@@ -4,6 +4,7 @@
 angular.module('MenuApp')
 .controller('CategoryItemsController', CategoryItemsController);
 
+
 CategoryItemsController.$inject = ['$stateParams', 'MenuDataService', 'categoryName', 'items'];
 function CategoryItemsController($stateParams, MenuDataService, categoryName, items) {
   var ctrl = this;
@@ -11,4 +12,5 @@ function CategoryItemsController($stateParams, MenuDataService, categoryName, it
   console.log($stateParams.categoryName);
   ctrl.items = items.data.menu_items;
 }
+
 })();
