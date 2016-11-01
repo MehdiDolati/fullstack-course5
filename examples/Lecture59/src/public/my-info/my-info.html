@@ -1,0 +1,13 @@
+<div ng-if="myInfoCtrl.registered" class="container">
+    <h1>My Info </h1>
+    <p>Name: {{ myInfoCtrl.myInfo.fName + " " + myInfoCtrl.myInfo.lName }} </p>
+    <p>Email address: {{ myInfoCtrl.myInfo.email }} </p>
+    <p>Phone number: {{ myInfoCtrl.myInfo.phone }} </p>
+    <p>Favorite dish: {{ myInfoCtrl.favItem.name }} </p>
+    <p>Description: {{ myInfoCtrl.favItem.description }} </p>
+    <p><img ng-src="images/menu/{{myInfoCtrl.favItem.category_short_name}}/{{myInfoCtrl.favItem.short_name}}.jpg"></p>
+</div>
+<div ng-if="!myInfoCtrl.registered" class="container">
+    <p>Not Signed Up Yet.</p>
+    <p><a href="" ui-sref="public.signup">Sign up Now!</a></p>
+</div>
